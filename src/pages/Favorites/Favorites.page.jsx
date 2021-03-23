@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import _ from 'underscore';
 
+import VideoList from '../../components/VideoList';
+import { FAV_STORAGE_KEY } from '../../utils/constants';
+import { storage } from '../../utils/storage';
 import { Container, Title } from './Favorites.styles';
 
 const FavoritesPage = () => {
-  return (
-    <Container>
-      <Title data-testid="favorites-message">Favorites</Title>
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const myFavs = storage.get(FAV_STORAGE_KEY);
+    setVideos(_.flatten(_.values(myFavs)));
+  }, []);
+
+  return videos ? (
+    <Container fixed={videos.length < 5}>
+      <Title>My Favorites</Title>
+      <VideoList videos={videos} />
+    </Container>
+  ) : (
+    <Container fixed>
+      <Title>There are no videos on My Favorites</Title>
     </Container>
   );
 };

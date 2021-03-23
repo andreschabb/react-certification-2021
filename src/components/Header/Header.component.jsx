@@ -10,7 +10,7 @@ import useQueryParams from '../../hooks/useQueryParams';
 const Header = ({ onOpenSidebar, onOpenModal }) => {
   const history = useHistory();
   const [searchedText, setSearchedText] = useState('');
-  const { authenticated, logout } = useAuth();
+  const { authenticated, logout, user } = useAuth();
   const { state, dispatch } = useGlobalState();
   const { isThemeLight } = state;
   const queryParam = useQueryParams().searchedText;
@@ -73,7 +73,16 @@ const Header = ({ onOpenSidebar, onOpenModal }) => {
           </Menu.Item>
           <Dropdown
             data-testid="header-dropdown"
-            icon={!isThemeLight ? 'user circle' : 'user circle outline'}
+            icon={
+              // eslint-disable-next-line no-nested-ternary
+              authenticated && user ? (
+                <img alt={user.name} src={user.avatarUrl} />
+              ) : !isThemeLight ? (
+                'user circle'
+              ) : (
+                'user circle outline'
+              )
+            }
             className="link icon item userIcon"
           >
             <Dropdown.Menu>

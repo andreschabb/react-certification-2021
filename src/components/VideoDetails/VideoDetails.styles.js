@@ -70,6 +70,7 @@ export const Title = styled.div`
 `;
 
 export const FavoritesButton = styled.button`
+  cursor: pointer;
   color: ${redOrWhite};
   background-color: ${whiteOrRed};
   padding: 10px;

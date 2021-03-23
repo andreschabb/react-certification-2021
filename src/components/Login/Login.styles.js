@@ -12,6 +12,11 @@ export const ModalTitle = styled.h2`
   text-align: center;
 `;
 
+export const ErrorLog = styled.div`
+  padding: 1rem;
+  color: red;
+`;
+
 export const FormGroup = styled.div`
   width: 100%;
   display: flex;

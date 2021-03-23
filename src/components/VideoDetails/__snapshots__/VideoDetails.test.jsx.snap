@@ -22,15 +22,6 @@ exports[`VideoDetails should renders 1`] = `
         >
           Video Tour | Welcome to Wizeline Guadalajara
         </div>
-        <button
-          class="sc-pFZIQ bDcyGj"
-        >
-          Add To Favorites 
-          <i
-            aria-hidden="true"
-            class="favorite icon"
-          />
-        </button>
       </div>
       <hr />
       <p

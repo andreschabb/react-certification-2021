@@ -1,7 +1,8 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import VideoDetails from './VideoDetails.component';
+import { useAuth } from '../../providers/Auth';
 import { useGlobalState } from '../../providers/GlobalState/Provider';
 
 const mockedVideo = {
@@ -38,10 +39,12 @@ const mockedVideos = [
   },
 ];
 
+jest.mock('../../providers/Auth');
 jest.mock('../../providers/GlobalState/Provider');
 
 describe('VideoDetails', () => {
   beforeEach(() => {
+    useAuth.mockImplementation(() => ({ authenticated: false }));
     useGlobalState.mockImplementation(() => ({
       state: { isThemeLight: true },
     }));
@@ -75,5 +78,22 @@ describe('VideoDetails', () => {
 
     expect(screen.getAllByTestId('related-video-item').length).toBe(1);
     expect(screen.getByText(mockedVideos[1].snippet.title)).toBeTruthy();
+  });
+
+  it('should not render the detailed video as a related video item', () => {
+    useAuth.mockImplementation(() => ({ authenticated: true }));
+    render(
+      <VideoDetails
+        videoId={mockedVideo.id.videoId}
+        description={mockedVideo.snippet.description}
+        title={mockedVideo.snippet.title}
+        videos={mockedVideos}
+      />
+    );
+    fireEvent.click(screen.getByTestId('favorites-button'));
+
+    expect(screen.getByTestId('favorites-button')).toHaveTextContent(
+      'Remove from Favorites'
+    );
   });
 });
