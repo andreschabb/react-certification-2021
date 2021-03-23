@@ -7,15 +7,15 @@ import { useGlobalState } from '../../providers/GlobalState/Provider';
 import { Container, Title, Loader } from './Results.styles';
 
 const ResultsPage = () => {
-  const queryParam = useQueryParams().searchedText;
-  const [videos, loading] = useAPI(queryParam);
+  const { searchedText } = useQueryParams();
+  const [videos, loading] = useAPI(searchedText);
   const { state } = useGlobalState();
   const { isThemeLight } = state;
 
   return !loading ? (
     <Container>
       <Title isThemeLight={isThemeLight} data-testid="results-message">
-        Results for {`"${queryParam}"`}:{' '}
+        Results for {`"${searchedText}"`}:{' '}
       </Title>
       <VideoList videos={videos} />
     </Container>

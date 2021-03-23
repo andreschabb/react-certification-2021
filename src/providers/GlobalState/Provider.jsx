@@ -13,7 +13,7 @@ const GlobalStateContext = createContext({
 function useGlobalState() {
   const context = useContext(GlobalStateContext);
   if (!context) {
-    throw new Error(`Can't use "useTodos" without an TodoProvider!`);
+    throw new Error(`Can't use "useGlobalState" without an GloablStateProvider!`);
   }
   return context;
 }

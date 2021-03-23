@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+const redOrWhite = ({ isThemeLight }) => (isThemeLight ? 'red' : 'white');
+const whiteOrRed = ({ isThemeLight }) => (isThemeLight ? 'white' : 'red');
+
 export const Row = styled.div`
   &::after {
     content: '';
@@ -67,8 +70,8 @@ export const Title = styled.div`
 `;
 
 export const FavoritesButton = styled.button`
-  color: ${({ isThemeLight }) => (isThemeLight ? 'red' : 'white')};
-  background-color: ${({ isThemeLight }) => (isThemeLight ? 'white' : 'red')};
+  color: ${redOrWhite};
+  background-color: ${whiteOrRed};
   padding: 10px;
   font-size: 16px;
   float: left;
@@ -82,9 +85,9 @@ export const FavoritesButton = styled.button`
   }
 
   &:hover {
-    border-color: ${({ isThemeLight }) => (isThemeLight ? 'red' : 'white')};
-    background-color: ${({ isThemeLight }) => (isThemeLight ? 'red' : 'white')};
-    color: ${({ isThemeLight }) => (isThemeLight ? 'white' : 'red')};
+    border-color: ${redOrWhite};
+    background-color: ${redOrWhite};
+    color: ${whiteOrRed};
   }
 `;
 
