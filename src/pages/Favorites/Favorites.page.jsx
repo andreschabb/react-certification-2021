@@ -11,7 +11,11 @@ const FavoritesPage = () => {
 
   useEffect(() => {
     const myFavs = storage.get(FAV_STORAGE_KEY);
-    setVideos(_.flatten(_.values(myFavs)));
+    if (myFavs) {
+      setVideos(_.flatten(_.values(myFavs)));
+    } else {
+      setVideos(null);
+    }
   }, []);
 
   return videos ? (
