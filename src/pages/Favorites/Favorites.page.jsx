@@ -18,7 +18,7 @@ const FavoritesPage = () => {
     }
   }, []);
 
-  return videos ? (
+  return videos && videos.length > 0 ? (
     <Container fixed={videos.length < 5}>
       <Title>My Favorites</Title>
       <VideoList videos={videos} />
