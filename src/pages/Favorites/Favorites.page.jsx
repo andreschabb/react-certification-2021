@@ -14,7 +14,7 @@ const FavoritesPage = () => {
     if (myFavs) {
       setVideos(_.flatten(_.values(myFavs)));
     } else {
-      setVideos(null);
+      setVideos([]);
     }
   }, []);
 
