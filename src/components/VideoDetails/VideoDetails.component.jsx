@@ -34,7 +34,7 @@ const VideoDetails = ({ videoId, description, title, videos }) => {
   }, [videoId]);
 
   const getCurrentVideo = () => {
-    return videos.filter((video) => videoId === video.id.videoId);
+    return videos.filter(({ id = {} } = {}) => videoId === id.videoId);
   };
 
   const addToFavorites = () => {
