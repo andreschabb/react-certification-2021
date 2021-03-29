@@ -3,6 +3,7 @@ import { Modal } from 'semantic-ui-react';
 
 import { useAuth } from '../../providers/Auth';
 import {
+  ErrorLog,
   FormGroup,
   InputLabel,
   LoginForm,
@@ -14,6 +15,7 @@ import {
 const Login = ({ open, setOpen }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const { login } = useAuth();
 
   const handleClose = () => {
@@ -22,10 +24,17 @@ const Login = ({ open, setOpen }) => {
     setOpen(false);
   };
 
-  const authenticate = (e) => {
+  const authenticate = async (e) => {
     e.preventDefault();
-    login();
-    handleClose();
+    try {
+      await login(username, password);
+      handleClose();
+    } catch (err) {
+      setError(err.message);
+      setTimeout(() => {
+        setError(null);
+      }, 3000);
+    }
   };
 
   return (
@@ -64,6 +73,7 @@ const Login = ({ open, setOpen }) => {
               onChange={(event) => setPassword(event.target.value)}
             />
           </FormGroup>
+          {error && <ErrorLog>{error}</ErrorLog>}
           <SubmitButton data-testid="login-button" type="submit">
             Login
           </SubmitButton>

@@ -3,7 +3,7 @@
 exports[`Watch should renders 1`] = `
 <div>
   <section
-    class="sc-bdfBwQ ggNUPL"
+    class="sc-bdfBwQ gTLTiV"
   >
     <div
       class="sc-eCssSg gIaHdG"
@@ -26,9 +26,10 @@ exports[`Watch should renders 1`] = `
             Title
           </div>
           <button
-            class="sc-jrAGrp bPYLSb"
+            class="sc-jrAGrp dIMBWR"
+            data-testid="favorites-button"
           >
-            Add To Favorites 
+            Add To Favorites
             <i
               aria-hidden="true"
               class="favorite icon"

@@ -28,7 +28,7 @@ describe('Login', () => {
     expect(queryByTestId('login-modal')).not.toBeInTheDocument();
   });
 
-  it('should allows user to login', () => {
+  it('should allows user to login', async () => {
     useAuth.mockImplementation(() => ({ authenticated: true, login: mockLogin }));
     const { getByTestId } = render(<Login {...loginModalOpened} />);
 
@@ -40,7 +40,7 @@ describe('Login', () => {
     expect(usernameInput.value).toBe('admin');
     expect(passwordInput.value).toBe('admin');
 
-    fireEvent.click(getByTestId('login-button'));
+    await fireEvent.click(getByTestId('login-button'));
     expect(usernameInput.value).toBe('');
     expect(passwordInput.value).toBe('');
 

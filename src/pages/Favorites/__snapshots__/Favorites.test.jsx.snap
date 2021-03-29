@@ -3,14 +3,17 @@
 exports[`Favorites should renders 1`] = `
 <div>
   <section
-    class="sc-bdfBwQ jMKfTJ"
+    class="sc-iBPRYJ tFyuG"
   >
     <h1
-      class="sc-gsTCUz eybKbR"
-      data-testid="favorites-message"
+      class="sc-fubCfw hnRPzm"
     >
-      Favorites
+      My Favorites
     </h1>
+    <div
+      class="sc-gKsewC ikKpsV"
+      data-testid="video-list"
+    />
   </section>
 </div>
 `;

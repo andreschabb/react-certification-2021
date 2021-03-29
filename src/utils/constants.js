@@ -1,4 +1,5 @@
 export const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
+export const FAV_STORAGE_KEY = 'my_favorite_videos';
 
 export const HOME_ROUTE = '/';
 export const FAVORITES_ROUTE = '/favorites';

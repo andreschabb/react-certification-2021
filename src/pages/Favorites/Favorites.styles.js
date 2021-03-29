@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.section`
-  height: 100%;
+  height: ${({ fixed }) => (fixed ? '85vh' : '100%')};
   width: 80%;
   margin-bottom: 5%;
+  text-align: center;
 `;
 
 export const Title = styled.h1`

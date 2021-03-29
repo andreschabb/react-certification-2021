@@ -7,7 +7,7 @@ describe('Favorites', () => {
   it('should renders', () => {
     const { container } = render(<Favorites />);
 
-    expect(screen.getByText('Favorites')).toBeTruthy();
+    expect(screen.getByText('My Favorites')).toBeTruthy();
 
     expect(container).toMatchSnapshot();
   });
